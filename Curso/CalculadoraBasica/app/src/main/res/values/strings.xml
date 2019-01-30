@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">CalculadoraBasica</string>
+    <string name="buttonDigCero_Text">0</string>
+    <string name="buttonDigUno_Text">1</string>
+    <string name="buttonDigDos_Text">2</string>
+    <string name="buttonDigTres_Text">3</string>
+    <string name="buttonDigCuatro_Text">4</string>
+    <string name="buttonDigCinco_Text">5</string>
+
+    <string name="buttonDigSeis_Text">6</string>
+    <string name="buttonDigSiete_Text">7</string>
+    <string name="buttonDigOcho_Text">8</string>
+    <string name="buttonDigNueve_Text">9</string>
+    <string name="buttonDigPunto_Text">.</string>
+
+
+
+    <string name="buttonOpDiv_Text">/</string>
+    <string name="buttonOpeZero_Text">C</string>
+    <string name="buttonOpMultip_Text">*</string>
+    <string name="buttonOpPorcen_Text">%</string>
+    <string name="buttonOpMenos_Text">-</string>
+    <string name="buttonOpExp_Text">#</string>
+
+    <string name="buttonOpMas_Text">+</string>
+    <string name="buttonOpIgual_Text">=</string>
+
+
+</resources>
