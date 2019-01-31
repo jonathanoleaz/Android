@@ -25,6 +25,8 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
+
+
         <Button
             android:id="@+id/buttonDigSiete"
             android:layout_width="0dp"
@@ -79,6 +81,27 @@
             android:text="@string/buttonOpeZero_Text"
             android:textSize="@dimen/sizeFontButtonDigito"
             android:textColor="@android:color/background_light" />
+
+        <Button
+            android:id="@+id/buttonOpSeno"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:text="@string/buttonDigSeno_Text"
+            android:textColor="@android:color/background_light"
+            android:textSize="@dimen/sizeFontButtonDigito"
+            style="?android:attr/borderlessButtonStyle"/>
+        <Button
+            android:id="@+id/buttonOpCoSeno"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:text="@string/buttonDigCoseno_Text"
+            android:textColor="@android:color/background_light"
+            android:textSize="@dimen/sizeFontButtonDigito"
+            style="?android:attr/borderlessButtonStyle"/>
     </LinearLayout>
 
     <LinearLayout
@@ -86,6 +109,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="horizontal">
+
+
 
         <Button
             android:id="@+id/buttonDigCuatro"
@@ -141,6 +166,27 @@
             android:text="@string/buttonOpPorcen_Text"
             android:textSize="@dimen/sizeFontButtonDigito"
             android:textColor="@android:color/background_light" />
+
+        <Button
+            android:id="@+id/buttonOpTan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:text="@string/buttonDigTangente_Text"
+            android:textColor="@android:color/background_light"
+            android:textSize="@dimen/sizeFontButtonDigito"
+            style="?android:attr/borderlessButtonStyle"/>
+        <Button
+            android:id="@+id/buttonOpCotTan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:text="@string/buttonDigCotangente_Text"
+            android:textColor="@android:color/background_light"
+            android:textSize="@dimen/sizeFontButtonDigito"
+            style="?android:attr/borderlessButtonStyle"/>
     </LinearLayout>
 
     <LinearLayout
@@ -148,6 +194,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="horizontal">
+
+
 
         <Button
             android:id="@+id/buttonDigUno"
@@ -203,6 +251,28 @@
             android:text="@string/buttonOpExp_Text"
             android:textColor="@android:color/background_light"
             android:textSize="@dimen/sizeFontButtonDigito"/>
+
+        <Button
+            android:id="@+id/buttonOpParIzq"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:text="@string/buttonDigParIzq_Text"
+            android:textColor="@android:color/background_light"
+            android:textSize="@dimen/sizeFontButtonDigito"
+            style="?android:attr/borderlessButtonStyle"/>
+
+        <Button
+            android:id="@+id/buttonOpParDer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:text="@string/buttonDigParDer_Text"
+            android:textColor="@android:color/background_light"
+            android:textSize="@dimen/sizeFontButtonDigito"
+            style="?android:attr/borderlessButtonStyle"/>
     </LinearLayout>
 
     <LinearLayout

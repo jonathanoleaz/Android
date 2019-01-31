@@ -26,4 +26,11 @@
     <string name="buttonOpIgual_Text">=</string>
 
 
+    <string name="buttonDigSeno_Text">SIN</string>
+    <string name="buttonDigCoseno_Text">COS</string>
+    <string name="buttonDigTangente_Text">TAN</string>
+    <string name="buttonDigCotangente_Text">COT</string>
+    <string name="buttonDigParDer_Text">)</string>
+    <string name="buttonDigParIzq_Text">(</string>
+
 </resources>
