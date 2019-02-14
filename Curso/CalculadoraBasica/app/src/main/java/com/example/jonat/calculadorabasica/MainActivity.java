@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 //Metodo 2 La class de la actividad implementa la interfaz onClickListener
 
 
@@ -28,6 +31,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonOperMultip;
     Button buttonOperDiv;
     Button buttonOperGato;
+
+    Button buttonCero;
+    Button buttonIgual;
 
 
     TextView textViewExpression;
@@ -52,6 +58,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonDigitoOcho=(Button) (this.findViewById(R.id.buttonOcho));
         buttonDigitoNueve=(Button) (this.findViewById(R.id.buttonNueve));
 
+        buttonOperPunto=(Button) (this.findViewById(R.id.buttonPunto));
+        buttonOperMas=(Button) (this.findViewById(R.id.buttonMas));
+        buttonOperMenos=(Button) (this.findViewById(R.id.buttonMenos));
+        buttonOperMultip=(Button) (this.findViewById(R.id.buttonMultip));
+        buttonOperDiv=(Button) (this.findViewById(R.id.buttonDivision));
+        buttonOperGato=(Button) (this.findViewById(R.id.buttonGato));
+
+        buttonCero=(Button) (this.findViewById(R.id.buttonCero));
+        buttonIgual=(Button) (this.findViewById(R.id.buttonIgual));
+
         textViewExpression=this.findViewById(R.id.textView2);
 
         buttonDigitoCero.setOnClickListener(this); //es la misma actividad la que va implementar el onClickListener
@@ -64,6 +80,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonDigitoSiete.setOnClickListener(this);
         buttonDigitoOcho.setOnClickListener(this);
         buttonDigitoNueve.setOnClickListener(this);
+
+        buttonOperPunto.setOnClickListener(this);
+        buttonOperMas.setOnClickListener(this);
+        buttonOperMenos.setOnClickListener(this);
+        buttonOperMultip.setOnClickListener(this);
+        buttonOperDiv.setOnClickListener(this);
+        buttonOperGato.setOnClickListener(this);
+
+        buttonCero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textViewExpression.setText("0");
+            }
+        });
+
+        buttonIgual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textViewExpression.setText(EvaluaExpresion(textViewExpression.getText().toString()).toString());
+            }
+        });
 
         //Método 1: definir una inner class por cada objeto
         /*
@@ -81,5 +118,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String texto= textViewExpression.getText().toString()+ ((Button)v).getText().toString();
         textViewExpression.setText(texto);
 
+    }
+/*Función para convertir una expresión infija a una expresion postfija*/
+    public String InfixToPostfix(String infixExpr){
+        String postfixExpr=null;
+
+
+        return postfixExpr;
+    }
+
+/*Función que evalua una expresión postfija*/
+    public Double EvaluaExpresion(String postfixExpr){
+        Double resultado=null;
+
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        map.put("-", 1);
+        map.put("+", 1);
+        map.put("%", 2);
+        map.put("*", 2);
+        map.put("/", 2);
+        map.put("SIN", 6);
+        map.put("COS", 6);
+        map.put("TAN", 6);
+        map.put("COT", 6);
+
+        map.put("(", 12); /* '(' tiene más prioridad que cualquier operador*/
+        map.put(")", 0);  /* '(' tiene menos prioridad que cualquier operador*/
+
+
+        return resultado;
     }
 }

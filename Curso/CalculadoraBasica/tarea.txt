@@ -1,0 +1,4 @@
+﻿pasar de expresion en notacion infija a postfija
+evaluar expresion en notación postfija
+
+Tabla de prioridad
