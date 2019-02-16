@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">CalculadoraBasica</string>
+    <string name="errorInTextView">Error</string>
     <string name="buttonDigCero_Text">0</string>
     <string name="buttonDigUno_Text">1</string>
     <string name="buttonDigDos_Text">2</string>
@@ -20,7 +21,7 @@
     <string name="buttonOpMultip_Text">*</string>
     <string name="buttonOpPorcen_Text">%</string>
     <string name="buttonOpMenos_Text">-</string>
-    <string name="buttonOpExp_Text">#</string>
+    <string name="buttonOpExp_Text">√</string>
 
     <string name="buttonOpMas_Text">+</string>
     <string name="buttonOpIgual_Text">=</string>
