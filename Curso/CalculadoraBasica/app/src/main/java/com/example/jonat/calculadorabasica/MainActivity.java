@@ -1,4 +1,5 @@
 package com.example.jonat.calculadorabasica;
+/*Código para una aplicación android de calculadora básica para el modo portrait (vertical) o científica ( modo horizontal). */
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,13 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Stack;
 
 //Metodo 2 La class de la actividad implementa la interfaz onClickListener
-
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -36,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonOperMultip;
     Button buttonOperDiv;
     Button buttonOperGato;
+    Button buttonPercent;
 
     Button buttonCero;
     Button buttonIgual;
@@ -47,9 +45,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonOpParIzq;
     Button buttonOpParDer;
 
+    Button buttonOpMenosUnario;
+
     TextView textViewExpression;
 
-    Boolean ultimaExpresionIsOperator = false;//ultima expresion que se agregó al textView
+    //Última expresión que se agregó al textView
+    Boolean ultimaExpresionIsOperator = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
 
-        //recuperar receferencias a los widgets y asignar codigo necesario
+        //Recuperar referencias a los widgets y asignar código necesario
         buttonDigitoCero = (Button) (this.findViewById(R.id.buttonZero));
         buttonDigitoUno = (Button) (this.findViewById(R.id.buttonDigUno));
         buttonDigitoDos = (Button) (this.findViewById(R.id.buttonDos));
@@ -79,6 +80,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonCero = (Button) (this.findViewById(R.id.buttonCero));
         buttonIgual = (Button) (this.findViewById(R.id.buttonIgual));
 
+        buttonPercent = (Button) (this.findViewById(R.id.buttonPorcentaje));
+
         buttonOpCos = (Button) (this.findViewById(R.id.buttonOpCoSeno));
         buttonOpSen = (Button) (this.findViewById(R.id.buttonOpSeno));
         buttonOpTan = (Button) (this.findViewById(R.id.buttonOpTan));
@@ -87,10 +90,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonOpParDer = (Button) (this.findViewById(R.id.buttonOpParDer));
         buttonOpParIzq = (Button) (this.findViewById(R.id.buttonOpParIzq));
 
+        buttonOpMenosUnario = (Button) (this.findViewById(R.id.buttonMenosUnario));
+
 
         textViewExpression = this.findViewById(R.id.textView2);
 
-        buttonDigitoCero.setOnClickListener(this); //es la misma actividad la que va implementar el onClickListener
+        //es la misma actividad la que va implementar el onClickListener
+        buttonDigitoCero.setOnClickListener(this);
         buttonDigitoUno.setOnClickListener(this);
         buttonDigitoDos.setOnClickListener(this);
         buttonDigitoTres.setOnClickListener(this);
@@ -107,7 +113,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonOperMultip.setOnClickListener(this);
         buttonOperDiv.setOnClickListener(this);
         buttonOperGato.setOnClickListener(this);
+        buttonPercent.setOnClickListener(this);
 
+        /*Para evitar la excepción pues cuando está en modo portrait, estas 'referencias' no existen en el ectivity_main.xml (land)*/
         if (buttonOpParDer != null)
             buttonOpParDer.setOnClickListener(this);
 
@@ -126,7 +134,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (buttonOpSen != null)
             buttonOpSen.setOnClickListener(this);
 
+        if (buttonOpMenosUnario != null) {
+            buttonOpMenosUnario.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
+                    /*Expresión que está en el textView*/
+                    String expresionToEvaluar = textViewExpression.getText().toString();
+                    /*Cadena que se concatenará según el botón*/
+                    String expresionToConcatenar = "(0-("+expresionToEvaluar+"))";
+
+                    if (expresionToEvaluar == "0" && expresionToConcatenar != "0") {
+                        expresionToEvaluar = "";
+                        textViewExpression.setText(expresionToEvaluar);
+                    }
+                    //System.out.println(expresionToConcatenar);
+                    //System.out.println(ultimaExpresionIsOperator);
+                    if ((ultimaExpresionIsOperator && expresionToConcatenar.matches("(\\d)|(\\()|(\\))|(SIN)|(COS)|(COT)|(TAN)|(√)|(%)")) | (!ultimaExpresionIsOperator)) { //evitar que se pongan
+                        String texto = expresionToConcatenar;
+                        textViewExpression.setText(texto);
+                        ultimaExpresionIsOperator = false;
+                    }
+
+
+                }
+            });
+        }
+
+        /*Se oprime el botón de 'C'*/
         buttonCero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,13 +170,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        /*Se evalua la expresión del textView*/
         buttonIgual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     String expresionToEvaluar = InfixToPostfix(textViewExpression.getText().toString());
-
                     textViewExpression.setText(EvaluaExpresion(expresionToEvaluar).toString());
+
                 } catch (Exception e) //
                 {
                     e.printStackTrace();
@@ -161,11 +197,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });*/
     }
 
+    /*Método para recuperar la expresión (text) que se haya dejado en el textView, pues al rotar la pantalla, se ejecuta el onCreate()*/
     @Override
     protected void onSaveInstanceState(final Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        // Save the state of item position
+        // Se guarda el text del textViewExpression (como String) como "valoresIngresados"
         outState.putString(nombreValorRecuperar, textViewExpression.getText().toString());
     }
 
@@ -173,22 +210,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onRestoreInstanceState(final Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
-        // Read the state of item position
+        // Se recupera el text del textViewExpression para cuando se ejecute el onCreate()
         valoresIngresados = savedInstanceState.getString(nombreValorRecuperar);
         textViewExpression.setText(valoresIngresados);
     }
 
     @Override
     public void onClick(View v) { //v describe el objeto
+        /*Expresión que está en el textView*/
         String expresionToEvaluar = textViewExpression.getText().toString();
+        /*Cadena que se concatenará según el botón*/
         String expresionToConcatenar = ((Button) v).getText().toString();
 
-        System.out.println(expresionToConcatenar);
-        System.out.println(ultimaExpresionIsOperator);
-        if ((ultimaExpresionIsOperator && expresionToConcatenar.matches("(\\d)|(\\()|(\\))|(SIN)|(COS)|(COT)|(TAN)|(√)")) | (!ultimaExpresionIsOperator)) { //evitar que se pongan
+        if (expresionToEvaluar == "0" && expresionToConcatenar != "0") {
+            expresionToEvaluar = "";
+            textViewExpression.setText(expresionToEvaluar);
+        }
+        //System.out.println(expresionToConcatenar);
+        //System.out.println(ultimaExpresionIsOperator);
+        if ((ultimaExpresionIsOperator && expresionToConcatenar.matches("(\\d)|(\\()|(\\))|(SIN)|(COS)|(COT)|(TAN)|(√)|(%)")) | (!ultimaExpresionIsOperator)) { //evitar que se pongan
             String texto = expresionToEvaluar + expresionToConcatenar;
             textViewExpression.setText(texto);
-            if (expresionToConcatenar.matches("([-+/*^√])"))
+            if (expresionToConcatenar.matches("([-+/*^√%])"))
                 ultimaExpresionIsOperator = true;
             else
                 ultimaExpresionIsOperator = false;
@@ -196,7 +239,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /* Método para la tabla de precedencias*/
     static int Prec(String ch) {
+
         switch (ch) {
             case "+":
             case "-":
@@ -208,6 +253,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case "^":
                 return 3;
+
+            case "%":
+                return 4;
 
             case "SIN":
 
@@ -231,27 +279,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public String InfixToPostfix(String exp) {
 
         /*Se agregan espacios en blanco entre cada token. Un token es un numero (con o sin parte decimal), operador (-+/*^),
-        o función trigonométrica*/
+        , función trigonométrica o paréntesis*/
 
-        String exp2 = exp.replaceAll("(?<=\\d)\\s*([-+/*^√])\\s*(?=\\d)", " $1 ");
+        String exp2 = exp.replaceAll("(?<=\\d)\\s*([-+/*^√%])\\s*(?=\\d)", " $1 ");
 
         //se agregan espacios en blanco entre cada paréntesis
         exp2 = exp2.replaceAll("((\\()|(\\)))", " $1 ");
 
-        //se agregan espacios entre cada operador de ser necesario
-        exp2 = exp2.replaceAll("([-+/*^√])", " $1 ");
+        //se agregan espacios entre cada operador (de ser necesario pues luego quedan juntos parentesis y operandos)
+        exp2 = exp2.replaceAll("([-+/*^√%])", " $1 ");
 
         //se quitan espacios inncesarios (dejando a lo más un espacio entre cada token)
         exp2 = exp2.replaceAll(" +", " ").trim();
 
-        String[] tokens = exp2.split(" "); //se dejan los tokens en un arreglo
+        //se dejan los tokens en un arreglo
+        String[] tokens = exp2.split(" ");
 
         String result = "";
 
         Stack<String> stack = new Stack<>();
 
         for (int i = 0; i < tokens.length; ++i) {
-            String token = tokens[i].trim();//por si tiene espacios al principio o al comienzo
+            String token = tokens[i].trim();//se eliminan espacios al principio o al comienzo
 
             // Si el token es un número (operando)
             if (token.matches("[0-9]*\\.?[0-9]+")) {
@@ -259,7 +308,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } // If the scanned character is an '(', push it to the stack.
             else if ("(".equals(token)) {
                 stack.push(token);
-            } // If the scanned character is an ')', pop and output from the stack
+            }
+            // If the scanned character is an ')', pop and output from the stack
             // until an '(' is encountered.
             else if (")".equals(token)) {
                 while (!stack.isEmpty() && !("(".equals(stack.peek()))) {
@@ -269,9 +319,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (!stack.isEmpty() && !("(".equals(stack.peek()))) {
                     return "Error en paréntesis"; // invalid expression
                 } else {
-                    stack.pop();  //se vacía la pila con los paréntesis que hayan quedado.
+                    stack.pop();  //se vacia la pila con los paréntesis que hayan quedado.
                 }
-            } else // an operator is encountered
+            } else // Se encontró un operador
             {
                 while (!stack.isEmpty() && Prec(token) <= Prec(stack.peek())) {
                     result += stack.pop() + " ";
@@ -279,7 +329,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 stack.push(token);
             }
         }
-        // pop all the operators from the stack
+        //Se sacan los operadores que faltan de la pila
         while (!stack.isEmpty()) {
             result += stack.pop() + " ";
         }
@@ -302,7 +352,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (c.matches("[0-9]*\\.?[0-9]+")) {
                 stack.push(Double.parseDouble(c));
             } //  If the scanned character is an operator, pop two
-            // elements from stack apply the operator
+            // Si el token no es un operando, entonces (debiera ser) se trata de un operador o función
             else {
                 if (c.matches("SIN|COS|TAN|COT|√"))//es funcion u operador unario
                 {
@@ -324,7 +374,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             stack.push(Math.sqrt(val1));
                     }
 
-                } else {
+                } else { //es función u operador
                     Double val1 = stack.pop();
                     Double val2 = stack.pop();
 
@@ -347,6 +397,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                         case "^":
                             stack.push(Math.pow(val2, val1));
+                            break;
+
+                        case "%":   //45 % 480 representa el 45% de 480, PREGUNTAR porque también puede ser módulo
+                            stack.push((val2 * 100) / val1);
                             break;
                     }
                 }

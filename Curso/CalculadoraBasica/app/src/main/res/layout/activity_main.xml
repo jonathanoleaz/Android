@@ -12,7 +12,7 @@
         android:id="@+id/textView2"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
-        android:layout_height="107dp"
+        android:layout_height="98dp"
         android:background="@color/colorTextView"
         android:gravity="right"
         android:text="@string/buttonDigCero_Text"

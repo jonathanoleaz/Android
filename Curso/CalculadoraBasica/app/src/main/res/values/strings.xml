@@ -25,6 +25,7 @@
 
     <string name="buttonOpMas_Text">+</string>
     <string name="buttonOpIgual_Text">=</string>
+    <string name="buttonOpMenosUnario_Text">(-)</string>
 
 
     <string name="buttonDigSeno_Text">SIN</string>
