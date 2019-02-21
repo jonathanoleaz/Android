@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FragmentosEstaticos</string>
+    <string name="action_settings">Settings</string>
+    <string name="botonUno_text">Opcion 1</string>
+    <string name="botonDos_text">Opcion 2</string>
+    <string name="botonTres_text">Opcion 3</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

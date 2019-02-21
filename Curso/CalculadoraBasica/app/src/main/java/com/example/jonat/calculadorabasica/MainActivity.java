@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         //Recuperar referencias a los widgets y asignar código necesario
         buttonDigitoCero = (Button) (this.findViewById(R.id.buttonZero));
         buttonDigitoUno = (Button) (this.findViewById(R.id.buttonDigUno));
