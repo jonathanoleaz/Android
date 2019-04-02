@@ -1,0 +1,22 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayoutMainLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context="mx.ipn.cic.geo.bitmapsexample1.MainActivity" >
+
+    <ImageView
+        android:id="@+id/imageViewBitmap"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7" />
+
+    <Button
+        android:id="@+id/buttonDrawBitmap"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/buttonDrawBitmapText" />
+</LinearLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Preferencias de tipo diálogo" >
+        <ListPreference
+            android:entries="@array/guesses_list"
+            android:entryValues="@array/guesses_list"
+            android:key="pref_numberOfChoices"
+            android:title="@string/number_of_choices"
+            android:summary="@string/number_of_choices_description"
+            android:persistent="true"
+            android:defaultValue="4"/>
+        <MultiSelectListPreference
+            android:entries="@array/regions_list_for_settings"
+            android:entryValues="@array/regions_list"
+            android:key="pref_regionsToInclude"
+            android:title="@string/world_regions"
+            android:summary="@string/world_regions_description"
+            android:persistent="true"
+            android:defaultValue="@array/regions_list" />
+        <EditTextPreference android:title="Nombre del jugador"
+            android:key="username"
+            android:summary="Nombre de este jugador:"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Preferencias de tipo switch" >
+        <CheckBoxPreference android:title="Guardar puntaje"
+            android:defaultValue="false"
+            android:summary="Desea guardar los puntajes obtenidos."
+            android:key="applicationUpdates" />
+
+
+        <SwitchPreference android:title="Recibir actualizaciones"
+            android:defaultValue="false"
+            android:summary="Deseo recibir las última actualizaciones de la app."
+            android:key="applicationUpdates" />
+    </PreferenceCategory>
+
+    <RingtonePreference android:showDefault="true"
+        android:key="Audio" android:title="Select sound"
+        android:ringtoneType="notification"/>
+
+</PreferenceScreen>
