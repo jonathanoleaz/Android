@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+
     android:orientation="vertical" >
 
     <fragment
@@ -10,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="500dp"
 
-        android:layout_below="@id/btnMarcador" />
+        android:layout_below="@id/btnTeot" />
 
     <GridLayout
         android:layout_width="match_parent"
@@ -20,39 +21,51 @@
         android:rowCount="2">
 
         <Button
-            android:id="@+id/btnMarcador"
+            android:id="@+id/btnTeot"
             android:layout_row="0"
             android:layout_column="0"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:text="Teotihuacán" />
 
         <Button
-            android:id="@+id/btnLineas"
+            android:id="@+id/btnMachu"
             android:layout_row="0"
             android:layout_column="1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:text="Machu Pichu" />
 
         <Button
-            android:id="@+id/btnPoligono"
+            android:id="@+id/btnMuralla"
             android:layout_row="0"
             android:layout_column="2"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:text="Muralla China" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnBigBen"
             android:layout_row="1"
             android:layout_column="0"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:text="Big Ben" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/btnSydney"
             android:layout_row="1"
             android:layout_column="1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:text="Sydney" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/btnJohan"
             android:layout_row="1"
             android:layout_column="2"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:text="Johanesburgo" />
 
     </GridLayout>

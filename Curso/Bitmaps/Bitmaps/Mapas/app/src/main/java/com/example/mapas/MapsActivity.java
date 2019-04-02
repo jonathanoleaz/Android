@@ -22,9 +22,12 @@ public class MapsActivity extends AppCompatActivity
 
     private GoogleMap mMap;
 
-    private Button btnMarcador;
-    private Button btnLineas;
-    private Button btnPoligono;
+    private Button btnTeot;
+    private Button btnMachuPichu;
+    private Button btnMuralla;
+    private Button btnBigBen;
+    private Button btnSydney;
+    private Button btnJohanesburgo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,27 +39,51 @@ public class MapsActivity extends AppCompatActivity
 
         mapFragment.getMapAsync(this);
 
-        btnMarcador = (Button)findViewById(R.id.btnMarcador);
-        btnMarcador.setOnClickListener(new View.OnClickListener() {
+        btnTeot = (Button)findViewById(R.id.btnTeot);
+        btnTeot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                insertarMarcador();
+                insertarMarcador(0);
             }
         });
 
-        btnLineas = (Button)findViewById(R.id.btnLineas);
-        btnLineas.setOnClickListener(new View.OnClickListener() {
+        btnMachuPichu = (Button)findViewById(R.id.btnMachu);
+        btnMachuPichu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mostrarLineas();
+                insertarMarcador(1);
             }
         });
 
-        btnPoligono = (Button)findViewById(R.id.btnPoligono);
-        btnPoligono.setOnClickListener(new View.OnClickListener() {
+        btnMuralla = (Button)findViewById(R.id.btnMuralla);
+        btnMuralla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mostrarPoligono();
+                insertarMarcador(2);
+            }
+        });
+
+        btnBigBen = (Button)findViewById(R.id.btnBigBen);
+        btnBigBen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertarMarcador(3);
+            }
+        });
+
+        btnSydney = (Button)findViewById(R.id.btnSydney);
+        btnSydney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertarMarcador(4);
+            }
+        });
+
+        btnJohanesburgo = (Button)findViewById(R.id.btnJohan);
+        btnJohanesburgo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertarMarcador(5);
             }
         });
     }
@@ -67,61 +94,38 @@ public class MapsActivity extends AppCompatActivity
 
         mMap.getUiSettings().setMapToolbarEnabled(false);
 
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            public boolean onMarkerClick(Marker marker) {
-                Toast.makeText(
-                        MapsActivity.this,
-                        "Marcador pulsado:\n" +
-                                marker.getTitle(),
-                        Toast.LENGTH_SHORT).show();
-
-                return true;
-            }
-        });
     }
 
-    private void insertarMarcador() {
+    private void insertarMarcador(int punto) {
         System.out.println("insertando punto");
-        LatLng sydney = new LatLng(19, -99);
+        LatLng sitioTuristico=new LatLng(19, -99);;
+        switch (punto){
+            case 0:
+                sitioTuristico = new LatLng(19, -99);
+                break;
+            case 1:
+                sitioTuristico = new LatLng(-13, -72);
+                break;
+
+            case 2:
+                sitioTuristico = new LatLng(40.431908, 116.570374);
+                break;
+            case 3:
+                sitioTuristico = new LatLng(51.500729, -0.124625);
+                break;
+
+            case 4:
+                sitioTuristico = new LatLng(-33.868820, 151.209290);
+                break;
+            case 5:
+                sitioTuristico = new LatLng(-26.201450, 28.045490);
+                break;
+        }
 
         mMap.addMarker(new MarkerOptions()
-                .position(sydney)
-                .title("Pais: Australia"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+                .position(sitioTuristico)
+                .title("Sitio turístico"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sitioTuristico));
 
-    }
-
-    private void mostrarLineas()
-    {
-        //Dibujo con Lineas
-
-        PolylineOptions lineas = new PolylineOptions()
-                .add(new LatLng(45.0, -12.0))
-                .add(new LatLng(45.0, 5.0))
-                .add(new LatLng(34.5, 5.0))
-                .add(new LatLng(34.5, -12.0))
-                .add(new LatLng(45.0, -12.0));
-
-        lineas.width(8);
-        lineas.color(Color.RED);
-
-        mMap.addPolyline(lineas);
-    }
-
-    private void mostrarPoligono()
-    {
-        //Dibujo con Poligonos
-
-        PolygonOptions rectangulo = new PolygonOptions()
-                .add(new LatLng(45.0, -12.0),
-                        new LatLng(45.0, 5.0),
-                        new LatLng(34.5, 5.0),
-                        new LatLng(34.5, -12.0),
-                        new LatLng(45.0, -12.0));
-
-        rectangulo.strokeWidth(8);
-        rectangulo.strokeColor(Color.RED);
-
-        mMap.addPolygon(rectangulo);
     }
 }
