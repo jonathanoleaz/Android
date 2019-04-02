@@ -4,50 +4,59 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <fragment
         android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="500dp"
-        tools:context=".MapsActivity" />
+
+        android:layout_below="@id/btnMarcador" />
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_gravity="center"
         android:columnCount="3"
         android:rowCount="2">
 
         <Button
-            android:id="@+id/button1"
-            android:layout_gravity="left|top"
-            android:text="Button" />
+            android:id="@+id/btnMarcador"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:text="Teotihuacán" />
 
         <Button
-            android:id="@+id/button2"
-            android:layout_gravity="left|top"
-            android:text="Button" />
+            android:id="@+id/btnLineas"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:text="Machu Pichu" />
 
         <Button
-            android:id="@+id/button3"
-            android:layout_gravity="left|top"
-            android:text="Button" />
+            android:id="@+id/btnPoligono"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:text="Muralla China" />
 
         <Button
             android:id="@+id/button4"
-            android:layout_gravity="left|top"
-            android:text="Button" />
+            android:layout_row="1"
+            android:layout_column="0"
+            android:text="Big Ben" />
 
         <Button
             android:id="@+id/button5"
-            android:layout_gravity="left|top"
-            android:text="Button" />
+            android:layout_row="1"
+            android:layout_column="1"
+            android:text="Sydney" />
 
         <Button
             android:id="@+id/button6"
-            android:layout_gravity="left|top"
-            android:text="Button" />
+            android:layout_row="1"
+            android:layout_column="2"
+            android:text="Johanesburgo" />
 
     </GridLayout>
+
+
+
 </LinearLayout>
