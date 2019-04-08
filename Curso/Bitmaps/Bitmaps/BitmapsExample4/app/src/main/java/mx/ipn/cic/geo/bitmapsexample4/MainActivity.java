@@ -1,9 +1,11 @@
 package mx.ipn.cic.geo.bitmapsexample4;
 
-import android.graphics.Color;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import org.jtransforms.fft.DoubleFFT_2D;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,10 +23,14 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageViewResultBitmap;
     ProgressBar progressBar;
 
+    SharedPreferences shared;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        this.shared=PreferenceManager.getDefaultSharedPreferences(this);
 
         this.buttonDrawBitmap = findViewById(R.id.buttonDrawBitmap);
         this.buttonConvertBitmap = findViewById(R.id.buttonConvertBitmap);
@@ -41,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
 
         this.buttonConvertBitmap.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+
+                String channel = (shared.getString("pref_tamVent", null));
+                System.out.println("Tamaño de ventana: "+channel);
+
                 progressBar.setProgress(0);
                 Bitmap sourceBitmap = ((BitmapDrawable)imageViewSourceBitmap.getDrawable()).getBitmap();
                 progressBar.setMax(imageViewSourceBitmap.getHeight() + 1);
@@ -61,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -78,6 +90,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.itemMenuExitApp:
                 this.finish();
                 System.exit(RESULT_OK);
+                return true;
+            case R.id.itemMenuAjustes:
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

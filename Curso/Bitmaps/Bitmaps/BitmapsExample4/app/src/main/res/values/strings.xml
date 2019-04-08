@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Manejo de Imágenes Ejemplo 4</string>
+    <string name="app_name"> Ejemplo 4</string>
     <string name="action_settings">Settings</string>
     <string name="buttonDrawBitmapText">Cargar</string>
     <string name="buttonConvertBitmapText">Grises</string>
     <string name="buttonFourierText">FFT</string>
+    <string name="itemMenuAjustes">Ajustes</string>
     <string name="itemMenuLoadBitmapTitle">Cargar</string>
     <string name="itemMenuExitApp">Salir</string>
     <string name="imageViewSourceBitmapDescription">Imagen Original</string>
     <string name="imageViewResulBitmapDescription">Imagen Resultado</string>
+    <string name="tamVentana">Tamaño de ventana</string>
+    <string name="tipoProc">Tipo de procesamiento</string>
+    <string name="tipoImagen">Tipo de imagen</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_settings">SettingsActivity</string>
 </resources>

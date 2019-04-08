@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tamanios_ventana">
+        <item>3*3</item>
+        <item>5*5</item>
+        <item>7*7</item>
+        <item>9*9</item>
+        <item>11*11</item>
+        <item>13*13</item>
+    </string-array>
+
+
+    <string-array name="tipos_de_procesamiento">
+        <item>Pixel por pixel</item>
+        <item>Leer por línea</item>
+        <item>Leer por imagen</item>
+    </string-array>
+
+    <string-array name="tipos_de_imagen">
+        <item>Color</item>
+        <item>Escala de grises</item>
+    </string-array>
+</resources>

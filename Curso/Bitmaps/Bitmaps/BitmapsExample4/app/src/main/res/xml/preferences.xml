@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <ListPreference
+            android:entries="@array/tamanios_ventana"
+            android:entryValues="@array/tamanios_ventana"
+            android:key="pref_tamVent"
+            android:title="@string/tamVentana"
+            android:persistent="true"
+            android:defaultValue="3*3"/>
+        <ListPreference
+            android:entries="@array/tipos_de_procesamiento"
+            android:entryValues="@array/tipos_de_procesamiento"
+            android:key="pref_tipoProc"
+            android:title="@string/tipoProc"
+            android:persistent="true"
+            android:defaultValue="Pixel por pixel" />
+
+    <ListPreference
+        android:entries="@array/tipos_de_imagen"
+        android:entryValues="@array/tipos_de_imagen"
+        android:key="pref_tipoImg"
+        android:title="@string/tipoImagen"
+        android:persistent="true"
+        android:defaultValue="Pixel por pixel" />
+
+
+        <EditTextPreference android:title="Nombre del jugador"
+            android:key="username"
+            android:summary="Nombre de este jugador:"/>
+
+
+
+        <CheckBoxPreference android:title="Guardar puntaje"
+            android:defaultValue="false"
+            android:summary="Desea guardar los puntajes obtenidos."
+            android:key="applicationUpdates" />
+
+
+        <SwitchPreference android:title="Recibir actualizaciones"
+            android:defaultValue="false"
+            android:summary="Deseo recibir las última actualizaciones de la app."
+            android:key="applicationUpdates" />
+
+
+    <RingtonePreference android:showDefault="true"
+        android:key="Audio" android:title="Select sound"
+        android:ringtoneType="notification"/>
+
+</PreferenceScreen>
