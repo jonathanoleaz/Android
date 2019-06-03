@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">EjemploMemoriaDisponible</string>
+    <string name="memory_ava_text_string">Memoria</string>
+    <string name="toggle_button_text_off">Iniciar Servicio</string>
+    <string name="toggle_button_text_on">Detener Servicio</string>
+    <string name="progress_text_string">Progreso</string>
+    <string name="turn_intent_service_string">Iniciar Intent Service</string>
+</resources>

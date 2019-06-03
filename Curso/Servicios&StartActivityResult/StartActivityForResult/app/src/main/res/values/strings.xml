@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">StartActivityForResult</string>
+    <string name="buttonSumar_Text">Operación Sumar</string>
+    <string name="buttonRestar_Text">Operación Restar</string>
+    <string name="textView_Resultado_Text">Resultado Operación</string>
+    <string name="textViewOperandoUno_Text">Operando 1:</string>
+    <string name="textViewOperandoDos_Text">Operando 2:</string>
+    <string name="editTextOperandoUno_Hint">Ingrese primer operando</string>
+    <string name="editTextOperandoDos_Hint">Ingrese segundo operando</string>
+    <string name="buttonOperacionSuma_Text">Calcular Suma</string>
+    <string name="buttonOperacionResta_Text">Calcular Resta</string>
+</resources>
