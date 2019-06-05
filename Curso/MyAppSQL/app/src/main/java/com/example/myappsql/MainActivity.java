@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         }
 
         if (v.getId() == R.id.buttonFind) {
-            Intent i = new Intent(getApplicationContext(),ListActivity.class);
+            Intent i = new Intent(getApplicationContext(), ListActivity.class);
             startActivity(i);
         }
 

@@ -31,6 +31,7 @@ public class Evento implements Serializable {
             this.nombreEvento = nombreEvento;
             this.inicio = inicio;
             this.fin = fin;
+            this.observaciones="";
         }
 
         public Integer getIdEvento() {
