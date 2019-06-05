@@ -1,0 +1,27 @@
+<resources>
+    <string name="urlDB">10.100.97.27:3306</string>
+    <string name="userDB">usuario_bd</string>
+    <string name="passDB">mypass</string>
+
+    <string name="app_name">MyAppSQL</string>
+    <string name="btnAdd">Agregar</string>
+    <string name="btnFind">Listar</string>
+    <string name="btnUpdate">Buscar y actualizar</string>
+    <string name="btnSearch">Buscar</string>
+
+    <string name="btnAceptar">Aceptar</string>
+    <string name="btnBuscarByName">Buscar por nombre</string>
+
+
+    <string name="title_activity_add">Activity_add</string>
+
+
+    <string name="eventName">Nombre del evento</string>
+    <string name="eventId">ID</string>
+    <string name="eventStart">Inicio</string>
+    <string name="eventEnd">Fin</string>
+    <string name="eventObservs">Observaciones</string>
+    <string name="title_activity_update">UpdateActivity</string>
+    <string name="title_activity_list">ListActivity</string>
+
+</resources>
